@@ -1,0 +1,245 @@
+  * 
+  {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+  }
+
+  body 
+  {   
+    background-image: url(../img/snow.gif);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 150%;
+    width: auto;   
+  }
+
+  .head
+  {
+    /*
+    color: #FFFFFF;
+    background: #FFFFFF;
+    text-shadow: 1px 3px 0 #0062cc, 1px 13px 5px #aba8a8;
+    color: #FFFFFF;
+    background: #6c757d78;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: inset 0 0 17px 3px black;
+    */
+    
+  }
+  
+  .main-section 
+  {
+    background: transparent;
+    max-width: 500px;
+    width: 90%;
+    height: auto;
+    margin: 30px auto;
+    border-radius: 10px;
+  }
+  
+  .add-section 
+  {
+    width: 100%;
+    background: #fff;
+    margin: 30px auto;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .add-section input {
+    display: block;
+    width: 95%;
+    height: 40px;
+    margin: 10px auto;
+    border: 2px solid #ccc;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 0px 5px;
+  }
+  
+  .add-section button {
+    display: block;
+    width: 95%;
+    height: 40px;
+    margin: 0px auto;
+    border: none;
+    outline: none;
+    background: #0088FF;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-section button:hover 
+  {
+    box-shadow: 0 2px 2px 0 #ccc, 0 2px 3px 0 #ccc;
+    opacity: 0.7;
+  }
+  
+  .add-section button span 
+  {
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+  }
+
+  .user
+  {
+    margin-top: 10px; 
+  }
+  
+  #errorMes 
+  {
+    display: block;
+    background: #f2dede;
+    width: 95%;
+    margin: 0px auto;
+    color: rgb(139, 19, 19);
+    padding: 10px;
+    height: 35px;
+  }
+  
+  .show-todo-section 
+  {
+    width: 100%;
+    background: #fff;
+    margin: 30px auto;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .todo-item 
+  {
+    width: 95%;
+    margin: 10px auto;
+    padding: 20px 10px;
+    box-shadow: 0 4px 8px 0 #ccc, 0 6px 20px 0 #ccc;
+    border-radius: 5px;
+  }
+  
+  .todo-item h2 
+  {
+    display: inline-block;
+    padding: 5px 0px;
+    font-size: 17px;
+    font-family: sans-serif;
+    color: #555;
+  }
+  
+  .todo-item small {
+    display: block;
+    width: 100%;
+    padding: 5px 0px;
+    color: #888;
+    padding-left: 30px;
+    font-size: 14px;
+    font-family: sans-serif;
+  }
+  /*--CSS for the Delete button---*/
+  .remove-to-do {
+    display: block;
+    float: right;
+    width: 20px;
+    height: 20px;
+    font-family: sans-serif;
+    color: rgb(139, 97, 93);
+    text-decoration: none;
+    text-align: right;
+    padding: 0px 5px 8px 0px;
+    border-radius: 50%;
+    transition: background 1s;
+    cursor: pointer;
+  }
+  
+  .remove-to-do:hover 
+  {
+    background: rgb(139, 97, 93);
+    color: #fff;
+  }
+/*--CSS for the Edit button---*/
+.btn-edit
+{
+    display: block;
+    float: right;
+    width: 30px;
+    height: 30px;
+    font-family: sans-serif;
+    color: transparent;
+    text-decoration: none;
+    text-align: right;
+    border-radius: 50%;
+    transition: background 1s;
+    cursor: pointer;
+}
+
+.btn-edit:hover 
+{
+  background: rgb(139, 97, 93);
+  color: #fff;
+}
+
+#demotext 
+{
+
+  color: grey;
+  font: grey;
+  background: #FFFFFF;
+  text-shadow: 1px 2px 0 #969696, 1px 5px 5px #aba8a8;
+  background: #FFFFFF;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 5px;
+  
+/*
+  color: #FFFFFF;
+  background: #FFFFFF;
+  text-shadow: 1px 3px 0 #0062cc, 1px 13px 5px #aba8a8;
+  color: #FFFFFF;
+  background: #6c757d78;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: inset 0 0 17px 3px black;
+  */
+}
+
+
+  
+  .checked 
+  {
+    color: #999 !important;
+    text-decoration: line-through;
+  }
+  
+  .todo-item input 
+  {
+    margin: 0px 5px;
+  }
+  
+  .empty 
+  {
+    font-family: sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color: #cccc;
+  }
+
+  .msg 
+  {
+    margin: 30px auto; 
+    padding: 10px; 
+    border-radius: 5px; 
+    color: #3c763d; 
+    background: #dff0d8; 
+    border: 1px solid #3c763d;
+    width: 50%;
+    text-align: center;
+}

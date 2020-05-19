@@ -1,0 +1,182 @@
+
+<?php
+
+require '../db_conn.php';
+/*
+if(isset($_GET['btnedit']))//Note the GET parameter now has a Hyphen instead of an underscore
+
+	{
+		$e_id = $_GET['btnedit'];
+	}
+
+	if(isset($_POST['btnedit']))
+	{
+		$edit = $_POST['title'];
+
+		$sql = "UPDATE id SET title = '$edit' WHERE btnedit = $e_id";
+		$statement = $conn->prepare($sql);
+		$statement->execute([$e_id]);
+		$updateData = $statement->fetch(PDO::FETCH_OBJ);
+
+		if(!$updateData)
+		{
+			die("Failed");
+		}
+		else
+		{
+			header("Location: index.php?update");
+		}
+	}
+
+	
+
+	 $sql = "SELECT * FROM todos WHERE id=?";
+    $statement = $conn->prepare($sql);
+    $statement->execute([$id]);
+    $updateData = $statement->fetch(PDO::FETCH_OBJ);
+
+    if (isset($_POST['btn-edit'])) 
+    {
+        $id = $_GET['id'];
+    }
+
+    
+      $title = $_POST['title'];
+      $sql = "UPDATE todos SET title WHERE id=?";
+      $statement = $conn->prepare($sql);
+     
+        if($statement->execute([$title, $id])) 
+        {
+          header("Location: edit.php");
+        }
+    
+        if($statement->execute([$title, $id])) 
+        {
+          header("Location: index.php");
+        }
+
+	*/
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!--Font awsomw CDN for the Delete icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="main-section">
+       <div class="edit-section">
+          <form action="app/edit.php" method="POST" autocomplete="off">
+            <?php 
+			//When clicking the ADD button with nothing, an error occurs
+            if(isset($_GET['btnedit']))
+            { ?>
+                <input type="text" name="title" value="<?php echo $updateData['title']; ?>" style="border-color: #ff6666" />
+              <button type="submit">Edit &nbsp; <span>&#43;</span></button>
+            <!--When clicking the ADD button with nothing, an error occurs-->
+             <?php }
+             else
+             	{ ?>
+              <input type="text" 
+                     name="title" 
+                     placeholder="Edit task here...?" />
+              <button type="submit">Edit &nbsp; <span>&#43;</span></button>
+             <?php } ?>
+          </form>
+       </div>
+<!--When the Task list is empty code, starts here-->
+       <?php 
+          $todos = $conn->prepare("SELECT * FROM todos WHERE id =?"); //Connecting and accessing the Database
+          $updateData = $statement->fetch(PDO::FETCH_ASSOC);
+	          //Editing script
+	          //$update = $conn->query("SELECT * FROM todos WHERE id = $e_id");
+          	
+	
+       ?>
+       <div class="show-todo-section">
+            <?php if($todos->rowCount() <= 0){ ?>
+                <div class="todo-item">
+                    <div class="empty">
+                        <img src="img/f.png" width="100%" />
+                        <img src="img/Ellipsis.gif" width="80px"/>
+                    </div>
+                </div>
+            <?php } ?>
+<!--When the Task list is empty code, ends here-->
+
+<!--When the task list is NOT empty, code starts here-->
+            <?php while($updateData = $statement->fetch(PDO::FETCH_ASSOC)) { ?>
+                <div class="todo-item">		<!--This is the DELETE button-->
+                    <span id="<?php echo $todo['id']; ?>"
+                          class="edit-to-do"><i style="font-size:24px" class="fa">&#xf014;</i></span>
+                    <!--Edit button-->
+                    <button type="submit" name="btn-edit" class="edit"><i style="font-size:24px" class="fa">&#xf044;</i></button>
+
+                    <!--Chechbox-->
+                    <?php if($todo['checked']){ ?> 
+                        <input type="checkbox"
+                               class="check-box"
+                               data-todo-id ="<?php echo $todo['id']; ?>"
+                               checked />
+                        <h2 class="checked"><?php echo $todo['title']; ?></h2>
+                    <?php }else { ?>
+                        <input type="checkbox"
+                               data-todo-id ="<?php echo $todo['id']; ?>"
+                               class="check-box"/>
+
+                        <h2><?php echo $updateData['title']; ?></h2>
+                    <?php } ?>
+                    <br>
+                    <small>created: <?php echo $todo['date_time']; ?></small> 
+                </div>
+            <?php } ?>
+       </div>
+    </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <!--Font awsomw CDN for the Delete icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="main-section" id="add-section">
+       <div class="add-section"  id="add-section">
+          <form action="app/edit.php" method="POST" autocomplete="off">
+             <?php 
+             
+      
+             ?>
+              
+              <input type="text" name="title"
+                value="<?php echo $title; ?>" style="border-color: #ff6666" placeholder="Cannot Leave Field Empty, Please Add A Task!" />
+
+                 <center><small><img src="https://img.icons8.com/color/48/000000/calendar.png" height=30 width=30/><br/><b>Edit Due date:</b></small></center>
+
+              <input class="form-control" type="date" name="ddate" placeholder="Due date" required="Please select a due date!">
+                <br>
+             <button type="submit" name="update">Update &nbsp; <span>&#43;</span></button>
+              
+          </form>
+       </div>
+
+       </div>
+</body>
+</html>

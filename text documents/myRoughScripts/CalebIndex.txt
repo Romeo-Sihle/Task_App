@@ -1,0 +1,134 @@
+<?php
+
+//INDEX.PHP
+	//connecting to the database
+	include 'includes/connect.php';
+
+	
+
+	if($_SERVER['REQUEST_METHOD'] == 'POST')
+	{
+		$task = $_POST['task'];
+		$date = date('l dS F\, Y');
+		$ddate = date('l dS F\, Y');
+		echo $date; 
+
+		$sql = "INSERT INTO task_table(t_name, t_date, t_ddate) 
+			VALUES('$task','$date','$ddate');";
+
+		$results = mysqli_query($conn, $sql);	
+		if(!$results)
+		{
+			die("Failed!");
+		}
+		else
+		{
+			header("Location: index.php?task_added");
+		}
+	}
+
+
+	if(isset($_GET['delete_task']))
+	{
+		$dtl_task = $_GET['delete_task'];
+		$sqli = "DELETE FROM task_table WHERE t_id = $dtl_task";
+		$res  = mysqli_query($conn, $sqli);	
+		if(!$res)
+		{
+			die("Failed!");
+		}
+		else
+		{
+			header("Location: index.php?task_deleted");
+		}
+	}
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>To Do App</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+	<style>
+		.todo
+		{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			border-radius: 5px;
+			border: 2px solid #cccccc;
+			margin-top: 5px;
+		}
+
+		.search
+		{
+			margin-top: 10px;
+		}
+
+	</style>
+<body>
+<div class="container">
+	<div class="todo">
+		<h1>To Do App</h1>
+		<h3>Add a New Task</h3>
+		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+			<div class="form-group">
+				<input class="form-control" type="text" name="task" placeholder="Task Name" required="Please add a task!">
+			</div>
+			<div class="form-group">
+				<input class="btn-primary" type="submit" value="Add a New Task List">
+			</div>
+
+		</form>
+	</div>
+	<div class="col-lg-4 search">
+		<form action="search.php" method="post">
+			<input type="text" class="form-control" name="search" placeholder="Search Task">
+		</form>
+	</div>
+	<div class="table-responsive col-lg-12">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<th>ID</th>
+				<th>TASK</th>
+				<th>DATE ADDED</th>
+				<th>DUE DATE</th>
+				<th>EDIT TASK</th>
+				<th>DELETE TASK</th>
+			</thead>
+			<tbody>
+						<?php	
+						$query = "SELECT * FROM task_table";
+						$result = mysqli_query($conn, $query);
+
+						while($row = mysqli_fetch_assoc($result))
+						{						
+							$t_id = $row['t_id'];
+							$t_name = $row['t_name'];
+							$t_date = $row['t_date'];
+							$t_ddate = $row['t_ddate'];		
+
+						?> 	
+				
+						<tr>
+							<td><?php echo $t_id; ?></td>
+							<td><?php echo $t_name; ?></td>
+							<td><?php echo $t_date; ?></td>
+							<td><?php echo $t_ddate; ?></td>
+							<td><a href="edit.php?edit-task=<?php echo $t_id; ?>" class="btn-primary">Edit Task</a></td>
+							<td><a href="index.php?delete_task=<?php echo $t_id; ?>" class="btn-danger">Delete Task</a></td>
+						</tr>
+
+						<?php}}
+						?>			
+			</tbody>
+		</table>
+	</div>
+</div>
+
+</body>
+</html>
