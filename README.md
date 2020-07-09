@@ -1,6 +1,6 @@
 # Task-app
 
-4.	Project Title: Task App
+Project Title: Task App
 
 Description:
 This is a web app that you can be used to keep track of various tasks. The app makes use of a user login process that will allow access to the user that has successfully logged in. If not, the user should be allowed to sign up for a new account. The app can:
@@ -40,7 +40,7 @@ o	logout.php
 o	register.php
 o	resetpassword.php
 o	to_do_list.sql
----------------------------------------------------------------------------------------
+
 The database details can be found in the db_conn file, warning! Do not change anything
 server name = "localhost:3306";
 username = "root";
@@ -50,6 +50,6 @@ database name = "to_do_list";
 Installation Steps:
 
 1	In MySQL/PHPMyadmin, Create a table  and name it "to_do_list"
-2	Import the "to_do_list" SQL database file from MySQL/PHPMyadmin located on the root folder
+2	Import the "to_do_list.sql" database file from MySQL/PHPMyadmin which is located on the root folder
 
 Create your new account to log in the Task App
