@@ -4,13 +4,29 @@
 
 Description:
 This is a web app that you can be used to keep track of various tasks. The app makes use of a user login process that will allow access to the user that has successfully logged in. If not, the user should be allowed to sign up for a new account. The app can:
----------------------------------------------------------------------------------------------------------------------
+
 • Add tasks to the list
 • Delete tasks from the list
 • Edit tasks
 • Add due dates to tasks
 • Sort tasks alphabetically
 • Only pull user data in that is relative to the currently logged in user
+
+Project prerequisites:
+Development Environment Tools:
+•	XAMPP
+•	Apache
+•	phpMyAdmin
+
+Programming Languages:
+•	HTML
+•	CSS
+•	Javascript
+•	Bootstrap
+•	JQuery
+•	AJAX
+•	PHP
+•	MySQL
 
 File Structure:
 o	app
